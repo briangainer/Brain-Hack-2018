@@ -6,6 +6,21 @@ import {
 } from 'react-native';
 import {Agenda} from 'react-native-calendars';
 
+const arr = [
+  "Home, Anticipation (anxiety), 4",
+  "Work, Anger (coworkers talking behind my back), 3",
+  "Social, Happiness (excited to see old friend at lunch), 10",
+  "School, Fear (presentation anxiety), 4",
+  "Appointment (therapist), sadness, 3",
+  "Home, Surprise (woke up late!), 2",
+  "Work, Anger (Boss chewed me out for being late) 1",
+  "Social, Guilt (had a drink with my ex-boyfriend), 5",
+  "School, Trust (friend gave me their homework to copy when I forgot to do mine), 8",
+  "Home, Sadness (alone.), 1",
+  "Home, Fear (I lost my keys and thought that maybe they got stolen), 4",
+  "Appointment, Disgust (had an argument), 6"
+];
+
 export default class Log extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +34,7 @@ export default class Log extends Component {
       <Agenda
         items={this.state.items}
         loadItemsForMonth={this.loadItems.bind(this)}
-        selected={'2018-03-24'}
+        selected={'2018-02-01'}
         renderItem={this.renderItem.bind(this)}
         renderEmptyDate={this.renderEmptyDate.bind(this)}
         rowHasChanged={this.rowHasChanged.bind(this)}
@@ -50,7 +65,7 @@ export default class Log extends Component {
           const numItems = Math.floor(Math.random() * 5);
           for (let j = 0; j < numItems; j++) {
             this.state.items[strTime].push({
-              name: 'Item for ' + strTime,
+              name: arr[Math.floor(Math.random()*arr.length)],
               height: Math.max(50, Math.floor(Math.random() * 150))
             });
           }
@@ -67,6 +82,13 @@ export default class Log extends Component {
   }
 
   renderItem(item) {
+    if (item.name.match(/\d+/)[0] > 5) {
+      return (
+        <View style={[styles.item, {height: item.height}]}>
+          <Text style={{ color: 'red' }}>{item.name}</Text>
+        </View>
+      );
+    }
     return (
       <View style={[styles.item, {height: item.height}]}><Text>{item.name}</Text></View>
     );
@@ -74,7 +96,7 @@ export default class Log extends Component {
 
   renderEmptyDate() {
     return (
-      <View style={styles.emptyDate}><Text>This is empty date!</Text></View>
+      <View style={styles.emptyDate}><Text>No check-in recorded for today</Text></View>
     );
   }
 

@@ -18,7 +18,6 @@ export default class App extends React.Component {
     index: 0,
     routes: [
       { key: 'share', title: 'Share' },
-      { key: 'respond', title: 'Respond' },
       { key: 'log', title: 'Log' },
       { key: 'resources', title: 'Resources' },
     ],
@@ -30,7 +29,6 @@ export default class App extends React.Component {
 
   _renderScene = SceneMap({
     share: () => <Share />,
-    respond: () => <Respond />,
     log: () => <Log />,
     resources: () => <Resources />,
   });

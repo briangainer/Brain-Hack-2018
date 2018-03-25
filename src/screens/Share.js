@@ -17,27 +17,27 @@ export default class Share extends Component {
     case 'check_in':
       return <CheckIn />
     case 'reflection':
-      return <Reflection />
+      return <CheckIn />
     case 'crisis':
-      return <Crisis />
+      return <CheckIn />
     default:
       return (
         <Card>
           <CardItem header>
-            <Text>Share your thoughts</Text>
+            <Text style={{ fontSize: 20 }}>Share your thoughts</Text>
           </CardItem>
           <CardItem>
             <Body>
               <Button block onPress={() => this.setState({ window: 'check_in' })}>
-                <Text>Check in</Text>
+                <Text style={{ fontSize: 25, paddingBottom: 10, paddingTop: 20 }}>Check in</Text>
               </Button>
               <View style={{ paddingBottom: 18 }} />
               <Button block warning onPress={() => this.setState({ window: 'reflection' })}>
-                <Text>Reflection</Text>
+                <Text style={{ fontSize: 25, paddingBottom: 10, paddingTop: 20 }}>Reflection</Text>
               </Button>
               <View style={{ paddingBottom: 18 }} />
               <Button block danger onPress={() => this.setState({ window: 'crisis' })}>
-                <Text>Crisis</Text>
+                <Text style={{ fontSize: 25, paddingBottom: 10, paddingTop: 20 }}>Crisis</Text>
               </Button>
               <View style={{ paddingBottom: 18 }} />
             </Body>
